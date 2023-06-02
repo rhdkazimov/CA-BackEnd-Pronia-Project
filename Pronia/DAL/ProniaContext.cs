@@ -18,6 +18,9 @@ namespace Pronia.DAL
         DbSet<Tag> Tags { get; set; }
         DbSet<PlantTag> PlantTags { get; set; }
         DbSet<BasketItem> BasketItems { get; set; }
+        DbSet<PlantImage> PlantImages { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PlantTag>().HasKey(x => new { x.TagId, x.PlantId });
