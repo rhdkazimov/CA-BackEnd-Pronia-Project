@@ -13,7 +13,7 @@ namespace Pronia.DAL
         DbSet<Order> Order { get; set; }
         DbSet<OrderItem> OrderItem { get; set; }
         DbSet<AppUser> AppUser { get; set; }
-
+        DbSet<Setting> Setting { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
