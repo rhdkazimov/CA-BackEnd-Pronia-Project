@@ -4,7 +4,7 @@ using System.Data;
 
 namespace Pronia.Areas.Manage.Controllers
 {
-    //[Authorize(Roles = "SuperAdmin,Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [Area("manage")]
     public class DashboardController : Controller
     {

@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pronia.DAL;
+using Pronia.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,13 @@ builder.Services.AddDbContext<ProniaContext>(opt =>
 {
 	opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequiredLength = 8;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10);
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<ProniaContext>();
 
 var app = builder.Build();
 
