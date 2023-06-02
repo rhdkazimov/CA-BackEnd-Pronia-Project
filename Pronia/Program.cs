@@ -8,10 +8,10 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddDbContext<ProniaContext>(opt =>
-//{
-//    opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
-//});
+builder.Services.AddDbContext<ProniaContext>(opt =>
+{
+	opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+});
 
 var app = builder.Build();
 
