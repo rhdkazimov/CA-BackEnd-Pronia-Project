@@ -10,6 +10,10 @@ namespace Pronia.DAL
 
 		DbSet<Plant> Plants { get; set; }
 		DbSet<Category> Category { get; set; }
+        DbSet<Order> Order { get; set; }
+        DbSet<OrderItem> OrderItem { get; set; }
+        DbSet<AppUser> AppUser { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
