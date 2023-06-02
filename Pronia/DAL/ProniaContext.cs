@@ -19,6 +19,7 @@ namespace Pronia.DAL
         DbSet<PlantTag> PlantTags { get; set; }
         DbSet<BasketItem> BasketItems { get; set; }
         DbSet<PlantImage> PlantImages { get; set; }
+        DbSet<PlantReview> PlantReviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
