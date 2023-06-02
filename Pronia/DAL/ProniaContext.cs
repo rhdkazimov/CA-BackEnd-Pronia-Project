@@ -15,6 +15,7 @@ namespace Pronia.DAL
         DbSet<AppUser> AppUser { get; set; }
         DbSet<Setting> Setting { get; set; }
         DbSet<Slider> Sliders { get; set; }
+        DbSet<Tag> Tags { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
