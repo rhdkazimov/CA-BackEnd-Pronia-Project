@@ -16,7 +16,7 @@ namespace Pronia.DAL
         DbSet<Setting> Setting { get; set; }
         DbSet<Slider> Sliders { get; set; }
         DbSet<Tag> Tags { get; set; }
-
+        DbSet<PlantTag> PlantTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
