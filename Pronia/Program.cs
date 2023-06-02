@@ -1,10 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Pronia.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
 
 builder.Services.AddControllersWithViews();
+
+//builder.Services.AddDbContext<ProniaContext>(opt =>
+//{
+//    opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+//});
+
+var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -14,7 +23,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseSession();
+//app.UseSession();
 
 app.UseRouting();
 
