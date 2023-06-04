@@ -18,12 +18,13 @@ namespace Pronia.Controllers
 		public IActionResult Index()
 		{
             HomeViewModel vm = new HomeViewModel();
-            vm.FeaturedBooks = _context.Books.Include(x => x.Author).Include(x => x.BookImages).Where(x => x.IsFeatured == true).Take(10).ToList();
-            vm.NewBooks = _context.Books.Include(x => x.Author).Include(x => x.BookImages).Where(x => x.IsNew == true).Take(10).ToList();
-            vm.DiscountedBooks = _context.Books.Include(x => x.Author).Include(x => x.BookImages).Where(x => x.DiscountPerctent > 0).Take(10).ToList();
-            vm.Slides = _context.Slides.ToList();
-            vm.Features = _context.Features.ToList();
-            return View();
+            vm.FeaturedPlants = _context.Plants.Include(x => x.PlantImages).Include(x => x.Category).Where(x => x.IsFeatured == true).Take(10).ToList();
+            vm.NewPlants = _context.Plants.Include(x => x.PlantImages).Include(x => x.Category).Where(x => x.IsNew == true).Take(10).ToList();
+            vm.DiscountedPlants = _context.Plants.Include(x=>x.PlantImages).Include(x=>x.Category).Where(x=>x.DiscountPercent>0).ToList();
+            vm.Slides = _context.Sliders.OrderBy(x=>x.Order).ToList();
+            //vm.Features = _context.Features.ToList();
+
+            return View(vm);
 		}
 
         public IActionResult Detail(int id)

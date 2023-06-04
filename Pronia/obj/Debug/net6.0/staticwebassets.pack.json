@@ -8181,8 +8181,16 @@
       "PackagePath": "staticwebassets\\assets\\scss\\style.scss"
     },
     {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\112700a7-168c-4186-bf26-8c8dada8a0d7jakob-owens-qoFQxxuk3QY-unsplash.jpg",
+      "PackagePath": "staticwebassets\\uploads\\plants\\112700a7-168c-4186-bf26-8c8dada8a0d7jakob-owens-qoFQxxuk3QY-unsplash.jpg"
+    },
+    {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\97ca8dcb-904d-421a-90b5-f3891619211f0d34ef629732f7e365dd6f5385b41ed0.jpg",
       "PackagePath": "staticwebassets\\uploads\\plants\\97ca8dcb-904d-421a-90b5-f3891619211f0d34ef629732f7e365dd6f5385b41ed0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\b39ac36c-37f0-48e3-b880-432f1c0e37e7maxresdefault.jpg",
+      "PackagePath": "staticwebassets\\uploads\\plants\\b39ac36c-37f0-48e3-b880-432f1c0e37e7maxresdefault.jpg"
     },
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\d47d58d7-a5d9-409e-9efb-18881cc249cb09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
