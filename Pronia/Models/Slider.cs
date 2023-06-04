@@ -7,6 +7,7 @@ namespace Pronia.Models
 	public class Slider
 	{
 		public int Id { get; set; }
+		public int Order { get; set; }
 		[MaxLength(20)]
 		public string Title { get; set; }
 		[Required]
@@ -18,11 +19,10 @@ namespace Pronia.Models
 		public string BtnText { get; set; }
 		[MaxLength(150)]
 		public string BtnUrl { get; set; }
-		[Required]
 		[MaxLength(100)]
 		public string ImageName { get; set; }
 		[MaxFileSize(2097152)]
-		[AllowsFileType("image/jpeg", "image/png")]
+		[AllowsFileType("image/jpeg", "image/png", "image/jpg")]
 		[NotMapped]
 		public IFormFile ImageFile { get; set; }
 	}

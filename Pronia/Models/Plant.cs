@@ -52,5 +52,6 @@ namespace Pronia.Models
 		public Category Category { get; set; }
 		public List<PlantTag> PlantTags { get; set; } = new List<PlantTag>();
 		public List<PlantImage> PlantImages { get; set; } = new List<PlantImage>();
+		public List<PlantReview> plantReviews { get; set; } = new List<PlantReview>();
 	}
 }

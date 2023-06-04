@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pronia.DAL;
 using Pronia.Models;
+using Pronia.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,26 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Password.RequiredLength = 8;
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10);
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<ProniaContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToLogin = options.Events.OnRedirectToAccessDenied = context =>
+    {
+        if (context.HttpContext.Request.Path.Value.StartsWith("/manage"))
+        {
+            var redirectUri = new Uri(context.RedirectUri);
+            context.Response.Redirect("/manage/account/login" + redirectUri.Query);
+        }
+        else
+        {
+            var redirectUri = new Uri(context.RedirectUri);
+            context.Response.Redirect("/account/login" + redirectUri.Query);
+        }
+
+        return Task.CompletedTask;
+    };
+});
+builder.Services.AddScoped<LayoutService>();
 
 var app = builder.Build();
 

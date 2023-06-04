@@ -8,5 +8,6 @@ namespace Pronia.Models
 		[Required]
 		[MaxLength(20)]
 		public string Name { get; set; }
+		public List<PlantTag> PlantTags { get; set; }
 	}
 }

@@ -8,18 +8,18 @@ namespace Pronia.DAL
 	{
 		public ProniaContext(DbContextOptions<ProniaContext> options) : base(options){ }
 
-		DbSet<Plant> Plants { get; set; }
-		DbSet<Category> Category { get; set; }
-        DbSet<Order> Order { get; set; }
-        DbSet<OrderItem> OrderItem { get; set; }
-        DbSet<AppUser> AppUser { get; set; }
-        DbSet<Setting> Setting { get; set; }
-        DbSet<Slider> Sliders { get; set; }
-        DbSet<Tag> Tags { get; set; }
-        DbSet<PlantTag> PlantTags { get; set; }
-        DbSet<BasketItem> BasketItems { get; set; }
-        DbSet<PlantImage> PlantImages { get; set; }
-        DbSet<PlantReview> PlantReviews { get; set; }
+        public DbSet<Plant> Plants { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<Setting> Setting { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PlantTag> PlantTags { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<PlantImage> PlantImages { get; set; }
+        public DbSet<PlantReview> PlantReviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

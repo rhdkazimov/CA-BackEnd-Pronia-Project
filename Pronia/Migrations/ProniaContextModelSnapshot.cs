@@ -519,6 +519,9 @@ namespace Pronia.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -709,7 +712,7 @@ namespace Pronia.Migrations
                         .IsRequired();
 
                     b.HasOne("Pronia.Models.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("PlantTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -733,6 +736,11 @@ namespace Pronia.Migrations
                 {
                     b.Navigation("PlantImages");
 
+                    b.Navigation("PlantTags");
+                });
+
+            modelBuilder.Entity("Pronia.Models.Tag", b =>
+                {
                     b.Navigation("PlantTags");
                 });
 #pragma warning restore 612, 618
