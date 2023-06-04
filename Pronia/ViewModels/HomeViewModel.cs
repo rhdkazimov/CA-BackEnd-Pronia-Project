@@ -9,7 +9,8 @@ namespace Pronia.ViewModels
         public List<Plant> NewPlants { get; set; }
         public List<Plant> DiscountedPlants { get; set; }
         public List<Slider> Slides { get; set; }
-        public List<Features> Features { get; set; }
+        public List<Feature> Features { get; set; }
+        public List<PlantReview> Reviews { get; set; } = new List<PlantReview>();
 
     }
 }
