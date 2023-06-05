@@ -708,7 +708,7 @@
     /*----------------------------------------*/
     /*  Close Button Actions
 /*----------------------------------------*/
-    $('.button-close').on('click', function (e) {
+    $(document).on('click','.button-close', function (e) {
         var dom = $('.main-wrapper').children();
         e.preventDefault();
         var $this = $(this);

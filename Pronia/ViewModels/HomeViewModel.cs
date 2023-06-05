@@ -12,5 +12,7 @@ namespace Pronia.ViewModels
         public List<Feature> Features { get; set; }
         public List<PlantReview> Reviews { get; set; } = new List<PlantReview>();
 
+        public List<Plant> NewProducts { get; set; } = new List<Plant>();
+
     }
 }

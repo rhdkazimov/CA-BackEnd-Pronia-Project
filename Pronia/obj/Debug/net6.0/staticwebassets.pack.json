@@ -7989,8 +7989,16 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\service.png"
     },
     {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\js\\basket.js",
+      "PackagePath": "staticwebassets\\assets\\js\\basket.js"
+    },
+    {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\js\\main.js",
       "PackagePath": "staticwebassets\\assets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\js\\modal.js",
+      "PackagePath": "staticwebassets\\assets\\js\\modal.js"
     },
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\js\\plugins.min.js",
@@ -8179,6 +8187,18 @@
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\scss\\style.scss",
       "PackagePath": "staticwebassets\\assets\\scss\\style.scss"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\features\\car.png",
+      "PackagePath": "staticwebassets\\uploads\\features\\car.png"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\features\\card.png",
+      "PackagePath": "staticwebassets\\uploads\\features\\card.png"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\features\\service.png",
+      "PackagePath": "staticwebassets\\uploads\\features\\service.png"
     },
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\112700a7-168c-4186-bf26-8c8dada8a0d7jakob-owens-qoFQxxuk3QY-unsplash.jpg",

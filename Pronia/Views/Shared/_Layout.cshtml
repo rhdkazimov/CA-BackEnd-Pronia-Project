@@ -3,7 +3,7 @@
 
 @{
     var settings = _layoutService.GetSettings();
-    //var basket = _layoutService.GetBasket();
+    var basket = _layoutService.GetBasket();
 }
 
 <!DOCTYPE html>
@@ -173,7 +173,7 @@
                       <li class="minicart-wrap me-3 me-lg-0">
                         <a href="#miniCart" class="minicart-btn toolbar-btn">
                           <i class="pe-7s-shopbag"></i>
-                          <span class="quantity">3</span>
+                          <span class="quantity basket-quantity">@basket.BasketItems.Count</span>
                         </a>
                       </li>
                       <li class="mobile-menu_wrap d-block d-lg-none">
@@ -200,14 +200,6 @@
                     <ul>
                       <li class="drop-holder">
                         <a asp-action="index" asp-controller="home">Home</a>
-@*                        <ul class="drop-menu">
-                          <li>
-                            <a href="index.html">Home One</a>
-                          </li>
-                          <li>
-                            <a href="index-2.html">Home Two</a>
-                          </li>
-                        </ul>*@
                       </li>
                       <li class="megamenu-holder">
                         <a href="shop.html">Shop</a>
@@ -536,15 +528,10 @@
                           </li>
                         </ul>
                       </li>
-                      <li class="d-none d-lg-block">
-                        <a href="wishlist.html">
-                          <i class="pe-7s-like"></i>
-                        </a>
-                      </li>
                       <li class="minicart-wrap me-3 me-lg-0">
                         <a href="#miniCart" class="minicart-btn toolbar-btn">
                           <i class="pe-7s-shopbag"></i>
-                          <span class="quantity">3</span>
+                          <span class="quantity basket-quantity">@basket.BasketItems.Count</span>
                         </a>
                       </li>
                       <li class="mobile-menu_wrap d-block d-lg-none">
@@ -566,11 +553,11 @@
           <div class="offcanvas-body">
             <div class="inner-body">
               <div class="offcanvas-top">
-                <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                <a asp-action="index" asp-controller="home" class="button-close"><i class="pe-7s-close"></i></a>
               </div>
               <div class="header-contact offcanvas-contact">
                 <i class="pe-7s-call"></i>
-                <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                <a href="tel://@settings["SupportPhone"]">+00 123 456 789</a>
               </div>
               <div class="offcanvas-user-info">
                 <ul class="dropdown-wrap">
@@ -934,7 +921,7 @@
             <div class="minicart-content">
               <div class="minicart-heading">
                 <h4 class="mb-0">Shopping Cart</h4>
-                <a href="#" class="button-close"
+                <a asp-action="index" asp-controller="home" class="button-close"
                   ><i
                     class="pe-7s-close"
                     data-tippy="Close"
@@ -947,104 +934,11 @@
                 ></a>
               </div>
               <ul class="minicart-list">
-                <li class="minicart-product">
-                  <a class="product-item_remove" href="#"
-                    ><i
-                      class="pe-7s-close"
-                      data-tippy="Remove"
-                      data-tippy-inertia="true"
-                      data-tippy-animation="shift-away"
-                      data-tippy-delay="50"
-                      data-tippy-arrow="true"
-                      data-tippy-theme="sharpborder"
-                    ></i
-                  ></a>
-                  <a
-                    href="single-product-variable.html"
-                    class="product-item_img"
-                  >
-                    <img
-                      class="img-full"
-                      src="~/assets/images/product/small-size/2-1-70x78.png"
-                      alt="Product Image"
-                    />
-                  </a>
-                  <div class="product-item_content">
-                    <a
-                      class="product-item_title"
-                      href="single-product-variable.html"
-                      >American Marigold</a
-                    >
-                    <span class="product-item_quantity">1 x $23.45</span>
-                  </div>
-                </li>
-                <li class="minicart-product">
-                  <a class="product-item_remove" href="#"
-                    ><i
-                      class="pe-7s-close"
-                      data-tippy="Remove"
-                      data-tippy-inertia="true"
-                      data-tippy-animation="shift-away"
-                      data-tippy-delay="50"
-                      data-tippy-arrow="true"
-                      data-tippy-theme="sharpborder"
-                    ></i
-                  ></a>
-                  <a
-                    href="single-product-variable.html"
-                    class="product-item_img"
-                  >
-                    <img
-                      class="img-full"
-                      src="~/assets/images/product/small-size/2-2-70x78.png"
-                      alt="Product Image"
-                    />
-                  </a>
-                  <div class="product-item_content">
-                    <a
-                      class="product-item_title"
-                      href="single-product-variable.html"
-                      >Black Eyed Susan</a
-                    >
-                    <span class="product-item_quantity">1 x $25.45</span>
-                  </div>
-                </li>
-                <li class="minicart-product">
-                  <a class="product-item_remove" href="#">
-                    <i
-                      class="pe-7s-close"
-                      data-tippy="Remove"
-                      data-tippy-inertia="true"
-                      data-tippy-animation="shift-away"
-                      data-tippy-delay="50"
-                      data-tippy-arrow="true"
-                      data-tippy-theme="sharpborder"
-                    ></i>
-                  </a>
-                  <a
-                    href="single-product-variable.html"
-                    class="product-item_img"
-                  >
-                    <img
-                      class="img-full"
-                      src="~/assets/images/product/small-size/2-3-70x78.png"
-                      alt="Product Image"
-                    />
-                  </a>
-                  <div class="product-item_content">
-                    <a
-                      class="product-item_title"
-                      href="single-product-variable.html"
-                      >Bleeding Heart</a
-                    >
-                    <span class="product-item_quantity">1 x $30.45</span>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="minicart-item_total">
               <span>Subtotal</span>
-              <span class="ammount">$79.35</span>
+              <span class="ammount">$0.00</span>
             </div>
             <div class="group-btn_wrap d-grid gap-2">
               <a href="cart.html" class="btn btn-dark">View Cart</a>
@@ -1225,190 +1119,6 @@
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                data-tippy="Close"
-                data-tippy-inertia="true"
-                data-tippy-animation="shift-away"
-                data-tippy-delay="50"
-                data-tippy-arrow="true"
-                data-tippy-theme="sharpborder"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="modal-wrap row">
-                <div class="col-lg-6">
-                  <div class="modal-img">
-                    <div class="swiper-container modal-slider">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <a href="#" class="single-img">
-                            <img
-                              class="img-full"
-                              src="~/assets/images/website-images/1-1-570x633.jpg"
-                              alt="Product Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a href="#" class="single-img">
-                            <img
-                              class="img-full"
-                              src="~/assets/images/website-images/1-2-570x633.jpg"
-                              alt="Product Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a href="#" class="single-img">
-                            <img
-                              class="img-full"
-                              src="~/assets/images/website-images/1-3-570x633.jpg"
-                              alt="Product Image"
-                            />
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a href="#" class="single-img">
-                            <img
-                              class="img-full"
-                              src="~/assets/images/website-images/1-4-570x633.jpg"
-                              alt="Product Image"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 pt-5 pt-lg-0">
-                  <div class="single-product-content">
-                    <h2 class="title">American Marigold</h2>
-                    <div class="price-box">
-                      <span class="new-price">$23.45</span>
-                    </div>
-                    <div class="rating-box-wrap">
-                      <div class="rating-box">
-                        <ul>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                        </ul>
-                      </div>
-                      <div class="review-status">
-                        <a href="#">( 1 Review )</a>
-                      </div>
-                    </div>
-                    <div class="selector-wrap color-option">
-                      <span class="selector-title border-bottom-0">Color</span>
-                      <select
-                        class="nice-select wide border-bottom-0 rounded-0"
-                      >
-                        <option value="default">Black & White</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                        <option value="red">Red</option>
-                      </select>
-                    </div>
-                    <div class="selector-wrap size-option">
-                      <span class="selector-title">Size</span>
-                      <select class="nice-select wide rounded-0">
-                        <option value="medium">Medium Size & Poot</option>
-                        <option value="large">Large Size With Poot</option>
-                        <option value="small">Small Size With Poot</option>
-                      </select>
-                    </div>
-                    <p class="short-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisic elit, sed
-                      do eiusmod tempo incid ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostru exercitation ullamco
-                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate
-                    </p>
-                    <ul class="quantity-with-btn">
-                      <li class="quantity">
-                        <div class="cart-plus-minus">
-                          <input
-                            class="cart-plus-minus-box"
-                            value="1"
-                            type="text"
-                          />
-                        </div>
-                      </li>
-                      <li class="add-to-cart">
-                        <a
-                          class="btn btn-custom-size lg-size btn-pronia-primary"
-                          href="cart.html"
-                          >Add to cart</a
-                        >
-                      </li>
-                      <li class="wishlist-btn-wrap">
-                        <a class="custom-circle-btn" href="wishlist.html">
-                          <i class="pe-7s-like"></i>
-                        </a>
-                      </li>
-                      <li class="compare-btn-wrap">
-                        <a class="custom-circle-btn" href="compare.html">
-                          <i class="pe-7s-refresh-2"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <ul class="service-item-wrap pb-0">
-                      <li class="service-item">
-                        <div class="service-img">
-                          <img
-                            src="~/assets/images/shipping/icon/car.png"
-                            alt="Shipping Icon"
-                          />
-                        </div>
-                        <div class="service-content">
-                          <span class="title"
-                            >Free <br />
-                            Shipping</span
-                          >
-                        </div>
-                      </li>
-                      <li class="service-item">
-                        <div class="service-img">
-                          <img
-                            src="~/assets/images/shipping/icon/card.png"
-                            alt="Shipping Icon"
-                          />
-                        </div>
-                        <div class="service-content">
-                          <span class="title"
-                            >Safe <br />
-                            Payment</span
-                          >
-                        </div>
-                      </li>
-                      <li class="service-item">
-                        <div class="service-img">
-                          <img
-                            src="~/assets/images/shipping/icon/service.png"
-                            alt="Shipping Icon"
-                          />
-                        </div>
-                        <div class="service-content">
-                          <span class="title"
-                            >Safe <br />
-                            Payment</span
-                          >
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <!-- Modal Area End Here -->
@@ -1439,6 +1149,10 @@
     <script src="~/assets/js/plugins/ion.rangeSlider.min.js"></script>
     <script src="~/assets/js/plugins/mailchimp-ajax.js"></script>
     <script src="~/assets/js/plugins/jquery.counterup.js"></script>
+
+    <!--Custom JS-->
+    <script src="~/assets/js/modal.js"></script>
+    <script src="~/assets/js/basket.js"></script>
 
     <!--Main JS (Common Activation Codes)-->
     <script src="~/assets/js/main.js"></script>

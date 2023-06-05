@@ -24,6 +24,7 @@ namespace Pronia.Controllers
             vm.Slides = _context.Sliders.OrderBy(x=>x.Order).ToList();
             vm.Features = _context.Features.ToList();
             vm.Reviews = _context.PlantReviews.Take(3).ToList();
+            vm.NewProducts = _context.Plants.Include(x => x.PlantImages).Include(x => x.Category).Where(x => x.IsNew == true).Take(4).ToList();
 
             return View(vm);
 		}
