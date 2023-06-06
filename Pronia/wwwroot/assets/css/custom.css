@@ -1,0 +1,4 @@
+﻿.product-img img, .product-img img.secondary-img, .secondary-img, .primary-img {
+    height: 270px !important;
+    object-fit: cover
+}

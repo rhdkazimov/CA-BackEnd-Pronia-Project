@@ -27,7 +27,7 @@
 
     <!-- CSS
     ============================================ -->
-
+    <link rel="stylesheet" href="~/assets/css/custom.css" />
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/assets/css/Pe-icon-7-stroke.css" />
@@ -42,6 +42,10 @@
   </head>
 
   <body>
+    @if (TempData["Success"] != null)
+    {
+        <input type="hidden" value="@TempData["Success"]" id="successInput" />
+    }
     <div class="preloader-activate preloader-active open_tm_preloader">
       <div class="preloader-area-wrap">
         <div
@@ -153,16 +157,32 @@
                           class="dropdown-menu"
                           aria-labelledby="settingButton"
                         >
-                          <li>
-                            <a class="dropdown-item" href="my-account.html"
-                              >My account</a
-                            >
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="login-register.html"
-                              >Login | Register</a
-                            >
-                          </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                        {
+                         <li>
+                             <a class="dropdown-item" asp-action="Profile" asp-controller="account"
+                               >My account</a
+                                                >
+                                                </li>
+                                                <li>
+                                                <a class="dropdown-item" asp-action="logout" asp-controller="account"
+                                                >Log Out</a
+                                                >
+                                                    </li>
+                        }
+                        else
+                          {
+                                   <li>
+                                                    <a class="dropdown-item" asp-action="login" asp-controller="account"
+                                                    >Login</a
+                                                    >
+                                                    </li>
+                                                    <li>
+                                                    <a class="dropdown-item" asp-action="register" asp-controller="account"
+                                                    >Register</a
+                                                    >
+                                   </li>
+                         }
                         </ul>
                       </li>
                       <li class="d-none d-lg-block">
@@ -1156,5 +1176,32 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="~/assets/js/main.js"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        if ($("#successInput").length) {
+            toastr["success"]($("#successInput").val())
+        }
+        else if ($("#errorInput").length) {
+            toastr["error"]($("#errorInput").val())
+        }
+    </script>
   </body>
 </html>

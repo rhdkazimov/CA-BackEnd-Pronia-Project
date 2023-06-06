@@ -7353,6 +7353,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
     },
     {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\css\\custom.css",
+      "PackagePath": "staticwebassets\\assets\\css\\custom.css"
+    },
+    {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\css\\font-awesome.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\font-awesome.min.css"
     },
@@ -8211,6 +8215,14 @@
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\b39ac36c-37f0-48e3-b880-432f1c0e37e7maxresdefault.jpg",
       "PackagePath": "staticwebassets\\uploads\\plants\\b39ac36c-37f0-48e3-b880-432f1c0e37e7maxresdefault.jpg"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\c5fe16f4-5396-4313-bd4e-d3bb174690c3download.jpg",
+      "PackagePath": "staticwebassets\\uploads\\plants\\c5fe16f4-5396-4313-bd4e-d3bb174690c3download.jpg"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\d0473a7f-dadc-4f84-b144-97f28f564654cacti.jpg",
+      "PackagePath": "staticwebassets\\uploads\\plants\\d0473a7f-dadc-4f84-b144-97f28f564654cacti.jpg"
     },
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\d47d58d7-a5d9-409e-9efb-18881cc249cb09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",

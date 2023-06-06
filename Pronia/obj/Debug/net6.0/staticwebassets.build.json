@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9dCxlw6aYW+t/dY36HnaQwGHr6jOkS0wZSGXDTpTugQ=",
+  "Hash": "4Xa7La/1z8cu6Ibs4aILWUL7DRdNILhK+3MxguFKcz0=",
   "Source": "Pronia",
   "BasePath": "_content/Pronia",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\css\\custom.css",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "assets/css/custom.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\custom.css"
     },
     {
       "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\css\\font-awesome.min.css",
@@ -34933,6 +34950,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\plants\\b39ac36c-37f0-48e3-b880-432f1c0e37e7maxresdefault.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\c5fe16f4-5396-4313-bd4e-d3bb174690c3download.jpg",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "uploads/plants/c5fe16f4-5396-4313-bd4e-d3bb174690c3download.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\plants\\c5fe16f4-5396-4313-bd4e-d3bb174690c3download.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\d0473a7f-dadc-4f84-b144-97f28f564654cacti.jpg",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "uploads/plants/d0473a7f-dadc-4f84-b144-97f28f564654cacti.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\plants\\d0473a7f-dadc-4f84-b144-97f28f564654cacti.jpg"
     },
     {
       "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\d47d58d7-a5d9-409e-9efb-18881cc249cb09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
