@@ -1,0 +1,46 @@
+﻿@model ProfileEditViewModel
+
+<form method="post" asp-action="profile" class="myaccount-form">
+                        <div class="myaccount-form-inner">
+                          <div class="single-input single-input-half">
+                            <label asp-for="FullName" >Full Name*</label>
+                            <input asp-for="FullName" />
+                            <span class="text-danger" asp-validation-for="FullName"></span>
+                          </div>
+                          <div class="single-input single-input-half">
+                            <label asp-for="UserName" >UserName*</label>
+                            <input asp-for="UserName" />
+                            <span class="text-danger" asp-validation-for="UserName"></span>
+                          </div>
+                          <div class="single-input">
+                            <label asp-for="Email" >Email*</label>
+                            <input asp-for="Email" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                          </div>
+                          <div class="single-input">
+                               <label asp-for="CurrentPassword" >Current Password(leave blank to leave
+                              unchanged)</label>
+                            <input asp-for="CurrentPassword" />
+                            <span class="text-danger" asp-validation-for="CurrentPassword"></span>
+                          </div>
+                          <div class="single-input">
+                            <label asp-for="NewPassword" >New Password (leave blank to leave
+                              unchanged)</label> 
+                            <input asp-for="NewPassword" />
+                            <span class="text-danger" asp-validation-for="NewPassword"></span>
+                          </div>
+                          <div class="single-input">
+                            <label asp-for="ConfirmPassword">Confirm New Password</label>
+                            <input asp-for="ConfirmPassword" />
+                            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                          </div>
+                          <div class="single-input">
+                            <button
+                              class="btn btn-custom-size lg-size btn-pronia-primary"
+                              type="submit"
+                            >
+                              <span>SAVE CHANGES</span>
+                            </button>
+                          </div>
+                        </div>
+                      </form>

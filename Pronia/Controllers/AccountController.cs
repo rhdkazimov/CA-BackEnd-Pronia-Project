@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pronia.DAL;
 using Pronia.Models;
 using Pronia.Services;
@@ -124,19 +125,19 @@ namespace Pronia.Controllers
                 return RedirectToAction("login");
             }
 
-            //AccountProfileViewModel vm = new AccountProfileViewModel
-            //{
-            //    Profile = new ProfileEditViewModel
-            //    {
-            //        FullName = user.FullName,
-            //        Email = user.Email,
-            //        UserName = user.UserName,
-            //        Address = user.Address,
-            //        Phone = user.Phone
-            //    },
-            //    Orders = _context.Orders.Include(x => x.OrderItems).ThenInclude(x => x.Book).Where(x => x.AppUserId == user.Id).ToList(),
-            //};
-            return View();
+            AccountProfileViewModel vm = new AccountProfileViewModel
+            {
+                Profile = new ProfileEditViewModel
+                {
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Address = user.Address,
+                    Phone = user.Phone
+                },
+                Orders = _context.Order.Include(x => x.OrderItems).ThenInclude(x => x.Plant).Where(x => x.AppUserId == user.Id).ToList()
+            };
+            return View(vm);
         }
         //[Authorize(Roles = "Member")]
         //[HttpPost]
@@ -214,58 +215,58 @@ namespace Pronia.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Resetpassword(ResetPasswordViewModel resetVM)
-        //{
-        //    AppUser user = await _userManager.FindByEmailAsync(resetVM.Email);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Resetpassword(ResetPasswordViewModel resetVM)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(resetVM.Email);
 
-        //    if (user == null || user.IsAdmin)
-        //        return RedirectToAction("login");
+            if (user == null || user.IsAdmin)
+                return RedirectToAction("login");
 
-        //    var result = await _userManager.ResetPasswordAsync(user, resetVM.Token, resetVM.Password);
+            var result = await _userManager.ResetPasswordAsync(user, resetVM.Token, resetVM.Password);
 
-        //    if (!result.Succeeded)
-        //    {
-        //        return RedirectToAction("login");
-        //    }
+            if (!result.Succeeded)
+            {
+                return RedirectToAction("login");
+            }
 
-        //    return RedirectToAction("login");
-        //}
+            return RedirectToAction("login");
+        }
 
-        //public IActionResult GoogleLogin()
-        //{
-        //    string url = Url.Action("googleresponse", "account", Request.Scheme);
+        public IActionResult GoogleLogin()
+        {
+            string url = Url.Action("googleresponse", "account", Request.Scheme);
 
-        //    var prop = _signInManager.ConfigureExternalAuthenticationProperties("Google", url);
+            var prop = _signInManager.ConfigureExternalAuthenticationProperties("Google", url);
 
-        //    return new ChallengeResult("Google", prop);
-        //}
+            return new ChallengeResult("Google", prop);
+        }
 
-        //public async Task<IActionResult> GoogleResponse()
-        //{
-        //    var info = _signInManager?.GetExternalLoginInfoAsync().Result;
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var info = _signInManager?.GetExternalLoginInfoAsync().Result;
 
-        //    if (info == null) return RedirectToAction("login");
+            if (info == null) return RedirectToAction("login");
 
-        //    var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
-        //    AppUser user = _userManager.FindByEmailAsync(email).Result;
+            AppUser user = _userManager.FindByEmailAsync(email).Result;
 
-        //    if (user == null)
-        //    {
-        //        user = new AppUser { Email = email, UserName = email };
-        //        var result = _userManager.CreateAsync(user).Result;
+            if (user == null)
+            {
+                user = new AppUser { Email = email, UserName = email };
+                var result = _userManager.CreateAsync(user).Result;
 
-        //        if (!result.Succeeded) return RedirectToAction("login");
+                if (!result.Succeeded) return RedirectToAction("login");
 
-        //        await _userManager.AddToRoleAsync(user, "Member");
-        //    }
+                await _userManager.AddToRoleAsync(user, "Member");
+            }
 
-        //    await _signInManager.SignInAsync(user, false);
+            await _signInManager.SignInAsync(user, false);
 
-        //    return RedirectToAction("index", "home");
-        //}
+            return RedirectToAction("index", "home");
+        }
 
     }
     }
