@@ -84,6 +84,13 @@
                       <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                           <tbody>
+                                            <tr>
+                                                <th>ORDER</th>
+                                                <th>DATE</th>
+                                                <th>STATUS</th>
+                                                <th>TOTAL</th>
+                                                <th></th>
+                                            </tr>
                   @foreach(var order in Model.Orders)
                   {
                                             <tr>
@@ -91,7 +98,7 @@
                                 <a class="account-order-id" href="#">#@order.Id</a>
                               </td>
                               <td>@order.CreatedAt.ToString("dd-MM-yyyy")</td>
-                              <td><span class="badge badge-@(order.Status==OrderStatus.Pending?"warning":(order.Status==OrderStatus.Rejected?"danger":"success"))">@order.Status.ToString()</span></td>
+                              <td><span class="badge text-@(order.Status==OrderStatus.Pending?"warning":(order.Status==OrderStatus.Rejected?"danger":"success"))">@order.Status.ToString()</span></td>
                               <td>$@order.OrderItems.Sum(x=>x.Count*x.UnitPrice).ToString("0.00") for @order.OrderItems.Count items</td>
                               <td>
                                 <a href="#" class="btn btn-dark"
