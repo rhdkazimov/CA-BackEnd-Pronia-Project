@@ -498,7 +498,7 @@
                                   <a href="compare.html">Compare</a>
                                 </li>
                                 <li>
-                                  <a href="checkout.html">Checkout</a>
+                                  <a asp-action="">Checkout</a>
                                 </li>
                               </ul>
                             </li>
@@ -564,33 +564,32 @@
                           class="dropdown-menu"
                           aria-labelledby="stickysettingButton"
                         >
-                                                @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
-                                                {
-                                 <li>
-                                     <a class="dropdown-item" asp-action="Profile" asp-controller="account"
-                                       >My account</a
-                                                        >
-                                                        </li>
-                                                        <li>
-                                                        <a class="dropdown-item" asp-action="logout" asp-controller="account"
-                                                        >Log Out</a
-                                                        >
-                                                            </li>
-                                                }
-                                                else
-                                                {
-                                           <li>
-                                                            <a class="dropdown-item" asp-action="login" asp-controller="account"
-                                                            >Login</a
-                                                            >
-                                                            </li>
-                                                            <li>
-                                                            <a class="dropdown-item" asp-action="register" asp-controller="account"
-                                                            >Register</a
-                                                            >
-                                           </li>
-                                                }                     
-
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                        {
+                        <li>
+                          <a class="dropdown-item" asp-action="Profile" asp-controller="account"
+                           >My account</a
+                          >
+                        </li>
+                        <li>
+                           <a class="dropdown-item" asp-action="logout" asp-controller="account"
+                           >Log Out</a
+                           >
+                        </li>
+                        }
+                        else
+                        {
+                        <li>
+                           <a class="dropdown-item" asp-action="login" asp-controller="account"
+                           >Login</a
+                           >
+                        </li>
+                        <li>
+                           <a class="dropdown-item" asp-action="register" asp-controller="account"
+                           >Register</a
+                           >
+                        </li>
+                        }                     
                         </ul>
                       </li>
                       <li class="minicart-wrap me-3 me-lg-0">
@@ -677,32 +676,24 @@
                       class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="settingButtonTwo"
                     >
-                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
-                                        {
-                                 <li>
-                                     <a class="dropdown-item" asp-action="Profile" asp-controller="account"
-                                       >My account</a
-                                                        >
-                                                        </li>
-                                                        <li>
-                                                        <a class="dropdown-item" asp-action="logout" asp-controller="account"
-                                                        >Log Out</a
-                                                        >
-                                                            </li>
-                                        }
-                                        else
-                                        {
-                                           <li>
-                                                            <a class="dropdown-item" asp-action="login" asp-controller="account"
-                                                            >Login</a
-                                                            >
-                                                            </li>
-                                                            <li>
-                                                            <a class="dropdown-item" asp-action="register" asp-controller="account"
-                                                            >Register</a
-                                                            >
-                                           </li>
-                                        }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                    {
+                       <li>
+                           <a class="dropdown-item" asp-action="Profile" asp-controller="account">My account</a>
+                       </li>
+                       <li>
+                           <a class="dropdown-item" asp-action="logout" asp-controller="account">Log Out</a>
+                       </li>
+                     }
+                    else
+                    {
+                       <li>
+                          <a class="dropdown-item" asp-action="login" asp-controller="account">Login</a>
+                       </li>
+                       <li>
+                          <a class="dropdown-item" asp-action="register" asp-controller="account">Register</a>
+                       </li>
+                    }
                     </ul>
                   </li>
                 </ul>

@@ -139,41 +139,41 @@ namespace Pronia.Controllers
             };
             return View(vm);
         }
-        //[Authorize(Roles = "Member")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Profile(ProfileEditViewModel profileVM)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        AccountProfileViewModel vm = new AccountProfileViewModel { Profile = profileVM };
-        //        return View(vm);
-        //    }
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Profile(ProfileEditViewModel profileVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                AccountProfileViewModel vm = new AccountProfileViewModel { Profile = profileVM };
+                return View(vm);
+            }
 
-        //    AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-        //    user.FullName = profileVM.FullName;
-        //    user.Email = profileVM.Email;
-        //    user.UserName = profileVM.UserName;
-        //    user.Address = profileVM.Address;
-        //    user.Phone = profileVM.Phone;
+            user.FullName = profileVM.FullName;
+            user.Email = profileVM.Email;
+            user.UserName = profileVM.UserName;
+            user.Address = profileVM.Address;
+            user.Phone = profileVM.Phone;
 
-        //    var result = await _userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
 
-        //    if (!result.Succeeded)
-        //    {
-        //        foreach (var item in result.Errors)
-        //        {
-        //            ModelState.AddModelError("", item.Description);
-        //        }
-        //        AccountProfileViewModel vm = new AccountProfileViewModel { Profile = profileVM };
-        //        return View(vm);
-        //    }
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                AccountProfileViewModel vm = new AccountProfileViewModel { Profile = profileVM };
+                return View(vm);
+            }
 
-        //    await _signInManager.SignInAsync(user, false);
+            await _signInManager.SignInAsync(user, false);
 
-        //    return RedirectToAction("profile");
-        //}
+            return RedirectToAction("profile");
+        }
 
         public IActionResult ForgetPassword()
         {
