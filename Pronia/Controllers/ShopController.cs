@@ -14,7 +14,7 @@ namespace Pronia.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int? categoryId, int? tagId, double? minPrice = null, double? maxPrice = null, string sort = "AToZ")
+        public IActionResult Index(int? categoryId, int? tagId, double? minPrice = null, double? maxPrice = null,string search = null, string sort = "AToZ")
         {
             ShopViewModel shopVM = new ShopViewModel
             {
@@ -50,6 +50,11 @@ namespace Pronia.Controllers
                     break;
             }
 
+            if (search != null)
+                query = query.Where(x => x.Name.Contains(search));
+
+            ViewBag.Search = search;
+            ViewBag.PlantCount = _context.Plants.Count();
 
             shopVM.Plants = query.ToList();
 

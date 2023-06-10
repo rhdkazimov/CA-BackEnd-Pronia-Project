@@ -2,3 +2,7 @@
     height: 270px !important;
     object-fit: cover
 }
+
+.staractive{
+    color: yellow !important;
+}

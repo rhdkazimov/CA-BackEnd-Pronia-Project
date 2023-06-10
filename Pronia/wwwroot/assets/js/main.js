@@ -806,11 +806,23 @@
     }
 
     /*----------------------------------------*/
-    /*  ion Range Slider 
+    /*  ion Range Slider
 /*----------------------------------------*/
+
     $('.pronia-range-slider').ionRangeSlider({
         prefix: '$',
+        onFinish: function (data) {
+            console.log(data.from, data.to)
+        }
     });
+
+
+    //$('.pronia-range-slider').ionRangeSlider({
+    //    prefix: '$',
+    //    onFinish: function (data) {
+    //        console.log(data)
+    //    },
+    //});
 
     /*--------------------------------
     Ajax Contact Form

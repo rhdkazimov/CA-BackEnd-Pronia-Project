@@ -151,5 +151,69 @@ namespace Pronia.Controllers
 
             return PartialView("_BasketPartialView", bv);
         }
+
+        public IActionResult Detail(int id)
+        {
+            Plant plant = _context.Plants
+                .Include(x => x.PlantImages)
+                .Include(x => x.Category)
+                .Include(x => x.plantReviews).ThenInclude(x => x.AppUser)
+                .Include(x => x.PlantTags).ThenInclude(pt => pt.Tag).FirstOrDefault(pt => pt.Id == id);
+
+
+            if (plant == null) return View("Error");
+
+            PlantDetailViewModel vm = new PlantDetailViewModel
+            {
+                Plant = plant,
+                RelatedPlants = _context.Plants.Include(x => x.PlantImages).Where(x => x.CategoryId == plant.CategoryId).Take(4).ToList(),
+                Review = new PlantReview { PlantId = id }
+            };
+
+            ViewBag.Feature = _context.Features.ToList();
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Comment(PlantReview review)
+        {
+
+            if (!User.Identity.IsAuthenticated || !User.IsInRole("Member"))
+                return RedirectToAction("login", "account", new { returnUrl = Url.Action("detail", "plant", new { id = review.PlantId }) });
+
+
+            if (!ModelState.IsValid)
+            {
+                Plant plant = _context.Plants
+            .Include(x => x.PlantImages)
+            .Include(x => x.Category)
+                .Include(x => x.plantReviews).ThenInclude(x => x.AppUser)
+            .Include(x => x.PlantTags).ThenInclude(bt => bt.Tag).FirstOrDefault(x => x.Id == review.PlantId);
+
+                if (plant == null) return View("Error");
+
+                PlantDetailViewModel vm = new PlantDetailViewModel
+                {
+                    Plant = plant,
+                    RelatedPlants = _context.Plants.Include(x => x.PlantImages).Where(x => x.CategoryId == plant.CategoryId).Take(4).ToList(),
+                    Review = new PlantReview { PlantId = review.PlantId }
+                };
+                vm.Review = review;
+                return View("Detail", vm);
+            }
+
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            review.AppUserId = userId;
+            review.CreatedAt = DateTime.UtcNow.AddHours(4);
+
+            _context.PlantReviews.Add(review);
+            _context.SaveChanges();
+
+            return RedirectToAction("detail", new { id = review.PlantId });
+
+        }
     }
 }   

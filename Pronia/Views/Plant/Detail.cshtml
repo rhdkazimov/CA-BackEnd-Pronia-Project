@@ -1,0 +1,463 @@
+﻿@model PlantDetailViewModel
+@{
+    int rate = Model.Plant.plantReviews.Any() ? (int)Math.Ceiling(Model.Plant.plantReviews.Average(x => x.Rate)) : 0;
+}
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<!-- Begin Main Content Area  -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height"
+         data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Single Product</h2>
+                        <ul>
+                            <li>
+                                <a asp-action="index" asp-controller="home">Home</a>
+                            </li>
+                            <li>Product Detail</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-product-img">
+                        <div class="swiper-container single-product-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == true).ImageName"
+                                       class="single-img gallery-popup">
+                                        <img class="img-full"
+                                             src="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == true).ImageName"
+                                             alt="Product Image" />
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == false).ImageName"
+                                       class="single-img gallery-popup">
+                                        <img class="img-full"
+                                             src="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == false).ImageName"
+                                             alt="Product Image" />
+                                    </a>
+                                </div>
+                                @foreach(var img in Model.Plant.PlantImages)
+                                {
+                                    if (img.PosterStatus == null)
+                                    {
+                                    <div class="swiper-slide">
+                                        <a href="~/uploads/plants/@img.ImageName"
+                                           class="single-img gallery-popup">
+                                            <img class="img-full"
+                                                     src="~/uploads/plants/@img.ImageName"
+                                                 alt="Product Image" />
+                                        </a>
+                                    </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="thumbs-arrow-holder">
+                            <div class="swiper-container single-product-thumbs">
+                                <div class="swiper-wrapper">
+                                    <a href="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == true).ImageName" class="swiper-slide">
+                                        <img class="img-full"
+                                             src="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == true).ImageName"
+                                             alt="Product Thumnail" />
+                                    </a>
+                                    <a href="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == false).ImageName" class="swiper-slide" class="swiper-slide">
+                                        <img class="img-full"
+                                             src="~/uploads/plants/@Model.Plant.PlantImages.FirstOrDefault(x=> x.PosterStatus == false).ImageName"
+                                             alt="Product Thumnail" />
+                                    </a>
+                                @foreach(var img in Model.Plant.PlantImages)
+                                {
+                                    if (img.PosterStatus == null)
+                                        {
+                                    <a href="~/uploads/plants/@img.ImageName" class="swiper-slide">
+                                        <img class="img-full"
+                                             src="~/uploads/plants/@img.ImageName"
+                                             alt="Product Thumnail" />
+                                    </a>
+                                        }
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="thumbs-button-wrap d-none d-md-block">
+                                    <div class="thumbs-button-prev">
+                                        <i class="pe-7s-angle-left"></i>
+                                    </div>
+                                    <div class="thumbs-button-next">
+                                        <i class="pe-7s-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pt-lg-0">
+                    <div class="single-product-content">
+                        <h2 class="title">@Model.Plant.Name</h2>
+                        <div class="price-box">
+                            <span class="new-price">$@Model.Plant.CostPrice.ToString("0.00")</span>
+                        </div>
+                        <div class="rating-box-wrap">
+                            <div class="rating-box">
+                                <ul>
+                                    <div class="rating-box">
+                                        <ul>
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <li>
+                                                    
+                                                    <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="review-status">
+                                <a href="#">( @Model.Plant.plantReviews.Count Review )</a>
+                            </div>
+                        </div>
+                        @*<div class="selector-wrap size-option">
+                            <span class="selector-title">Size</span>
+                            <select class="nice-select wide rounded-0">
+                                <option value="medium">Medium Size & Poot</option>
+                                <option value="large">Large Size With Poot</option>
+                                <option value="small">Small Size With Poot</option>
+                            </select>
+                        </div>*@
+                        <p class="short-desc">
+                            @Model.Plant.Desc
+                        </p>
+                        <ul class="quantity-with-btn">
+                            <li class="quantity">
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box"
+                                           value="1"
+                                           type="text" />
+                                </div>
+                            </li>
+                            <li class="add-to-cart">
+                                <a class="btn btn-custom-size lg-size btn-pronia-primary"
+                                 asp-action="AddToBasket" asp-controller="plant">Add to cart</a>
+                            </li>
+                        </ul>
+                        <ul class="service-item-wrap">
+                            @foreach (var sv in ViewBag.Feature)
+                            {
+                            <li class="service-item">
+                                <div class="service-img">
+                                    <img src="~/uploads/features/@sv.Icon"
+                                         alt="Shipping Icon" />
+                                </div>
+                                <div class="service-content">
+                                    <span class="title">
+                                        @sv.Name
+                                    </span>
+                                </div>
+                            </li>
+                            }
+                        </ul>
+                        <div class="product-category">
+                            <span class="title">SKU:</span>
+                            <ul>
+                                <li>
+                                    <a href="#">@Model.Plant.SKU</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-category">
+                            <span class="title">Categories :</span>
+                            <ul>
+                                <li>
+                                    <a href="#">@Model.Plant.Category.Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-category product-tags">
+                            <span class="title">Tags :</span>
+                            <ul>
+                                @foreach(var tg in Model.Plant.PlantTags)
+                                {
+                                <li>
+                                    <a href="#">@tg.Tag.Name ,</a>
+                                </li>
+                                }
+                            </ul>                                   
+                        </div>
+                        <div class="product-category social-link align-items-center pb-0">
+                            <span class="title pe-3">Share:</span>
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/code.edu.az/?locale=tr_TR"
+                                       data-tippy="Facebook"
+                                       data-tippy-inertia="true"
+                                       data-tippy-animation="shift-away"
+                                       data-tippy-delay="50"
+                                       data-tippy-arrow="true"
+                                       data-tippy-theme="sharpborder">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/Rahid23273830"
+                                       data-tippy="Twitter"
+                                       data-tippy-inertia="true"
+                                       data-tippy-animation="shift-away"
+                                       data-tippy-delay="50"
+                                       data-tippy-arrow="true"
+                                       data-tippy-theme="sharpborder">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://az.linkedin.com/in/rahid-kazimov-a5a298259"
+                                       data-tippy="Linkedin"
+                                       data-tippy-inertia="true"
+                                       data-tippy-animation="shift-away"
+                                       data-tippy-delay="50"
+                                       data-tippy-arrow="true"
+                                       data-tippy-theme="sharpborder">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/rhd.kazimov/"
+                                       data-tippy="Instagram"
+                                       data-tippy-inertia="true"
+                                       data-tippy-animation="shift-away"
+                                       data-tippy-delay="50"
+                                       data-tippy-arrow="true"
+                                       data-tippy-theme="sharpborder">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-tab-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="tab-btn"
+                               id="information-tab"
+                               data-bs-toggle="tab"
+                               href="#information"
+                               role="tab"
+                               aria-controls="information"
+                               aria-selected="false">
+                                Information
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="active tab-btn"
+                               id="description-tab"
+                               data-bs-toggle="tab"
+                               href="#description"
+                               role="tab"
+                               aria-controls="description"
+                               aria-selected="true">
+                                Description
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="tab-btn"
+                               id="reviews-tab"
+                               data-bs-toggle="tab"
+                               href="#reviews"
+                               role="tab"
+                               aria-controls="reviews"
+                               aria-selected="false">
+                                Reviews(3)
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-tab-content">
+                        <div class="tab-pane fade"
+                             id="information"
+                             role="tabpanel"
+                             aria-labelledby="information-tab">
+                            <div class="product-information-body">
+                                <h4 class="title">Shipping</h4>
+                                <p class="short-desc mb-4">
+                                    The item will be shipped from China. So it need 15-20
+                                    days to deliver. Our product is good with reasonable
+                                    price and we believe you will worth it. So please wait
+                                    for it patiently! Thanks.Any question please kindly to
+                                    contact us and we promise to work hard to help you to
+                                    solve the problem
+                                </p>
+                                <h4 class="title">About return request</h4>
+                                <p class="short-desc mb-4">
+                                    If you don't need the item with worry, you can contact
+                                    us then we will help you to solve the problem, so please
+                                    close the return request! Thanks
+                                </p>
+                                <h4 class="title">Guarantee</h4>
+                                <p class="short-desc mb-0">
+                                    If it is the quality question, we will resend or refund
+                                    to you; If you receive damaged or wrong items, please
+                                    contact us and attach some pictures about product, we
+                                    will exchange a new correct item to you after the
+                                    confirmation.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active"
+                             id="description"
+                             role="tabpanel"
+                             aria-labelledby="description-tab">
+                            <div class="product-description-body">
+                                <p class="short-desc mb-0">
+                                    @Model.Plant.Desc
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade"
+                             id="reviews"
+                             role="tabpanel"
+                             aria-labelledby="reviews-tab">
+                            <div class="product-review-body">
+                                <div class="blog-comment mt-0">
+                                    <h4 class="heading">Comments (@Model.Plant.plantReviews.Count)</h4>
+                                    @foreach(var pr in Model.Plant.plantReviews)
+                                    {
+                                    <div class="blog-comment-item">
+                                        <div class="blog-comment-img">
+                                                <img src="https://publicdomainvectors.org/tn_img/abstract-user-flat-4.webp"
+                                                 alt="User Image" />
+                                        </div>
+                                        <div class="blog-comment-content">
+                                            <div class="user-meta">
+                                                <h2 class="user-name">@pr.AppUser.FullName</h2>
+                                                <div class="rating-box">
+                                                    <ul>
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <li>
+                                                                <i class="fa @(i<=pr.Rate? "fa-star":"fa-star-o" )"></i>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                                    <span class="date">@pr.CreatedAt.ToString("MMMM dd, yyyy")</span>
+                                            </div>
+                                            <p class="user-comment">
+                                                @pr.Text
+                                            </p>
+                                        </div>  
+                                    </div>
+                                    }
+                                </div>
+                                <div class="feedback-area">
+                                    <h2 class="heading">Leave a comment</h2>
+                                    @Html.Partial("_PlantReviewFormPartial",Model.Review)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin Product Area -->
+    <div class="product-area section-space-y-axis-90">
+        <div class="container">
+            <div class="row">
+                <div class="section-title-wrap without-tab">
+                    <h2 class="section-title">Related Products</h2>
+                    <p class="section-desc">
+                        Contrary to popular belief, Lorem Ipsum is not simply random
+                        text. It has roots in a piece of classical Latin literature
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <div class="swiper-container product-slider">
+                        <div class="swiper-wrapper">
+                            @foreach(var rp in Model.RelatedPlants)
+                            {
+                            <div class="swiper-slide product-item">
+                                <div class="product-img">
+                                    <a asp-action="detail" asp-controller="plant" asp-route-id="@rp.Id">
+                                        <img class="primary-img"
+                                             src="~/uploads/plants/@rp.PlantImages.FirstOrDefault(x=> x.PosterStatus==true).ImageName"
+                                             alt="Product Images" />
+                                        <img class="secondary-img"
+                                                 src="~/uploads/plants/@rp.PlantImages.FirstOrDefault(x=> x.PosterStatus==false).ImageName"
+                                             alt="Product Images" />
+                                    </a>
+                                    <div class="product-add-action">
+                                        <ul>
+                                            <li class="quuickview-btn"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#quickModal">
+                                                <a asp-action="PlantDetail" asp-controller="plant" asp-route-id="@rp.Id"
+                                                   data-tippy="Quickview"
+                                                   data-tippy-inertia="true"
+                                                   data-tippy-animation="shift-away"
+                                                   data-tippy-delay="50"
+                                                   data-tippy-arrow="true"
+                                                   data-tippy-theme="sharpborder">
+                                                    <i class="pe-7s-look"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="addtobasket" asp-controller="plant" asp-route-id="@rp.Id"
+                                                   data-tippy="Add to cart"
+                                                   data-tippy-inertia="true"
+                                                   data-tippy-animation="shift-away"
+                                                   data-tippy-delay="50"
+                                                   data-tippy-arrow="true"
+                                                   data-tippy-theme="sharpborder">
+                                                    <i class="pe-7s-cart"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <a class="product-name"
+                                       href="single-product-variable.html">@rp.Name</a>
+                                    <div class="price-box pb-1">
+                                        <span class="new-price">$@rp.CostPrice</span>
+                                    </div>
+                                    <div class="rating-box">
+                                        <ul>
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <li>
+                                                        <i class="fa @(i<=rp.plantReviews.FirstOrDefault(x=>x.PlantId==rp.Id).Rate? "fa-star":"fa-star-o" )"></i>
+                                                    </li>
+                                                }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product Area End Here -->
+</main>
+<!-- Main Content Area End Here  -->
