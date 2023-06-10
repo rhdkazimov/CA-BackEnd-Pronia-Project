@@ -32,7 +32,7 @@ namespace Pronia.Controllers
             return PartialView("_PlantModalPartialView", pm);
         }
 
-        public IActionResult AddToBasket(int id)
+        public IActionResult AddToBasket(int id,int count=1)
         {
             if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
             {
@@ -41,7 +41,7 @@ namespace Pronia.Controllers
                 if (basketItem != null) basketItem.Count++;
                 else
                 {
-                    basketItem = new BasketItem { AppUserId = userId, PlantId = id, Count = 1 };
+                    basketItem = new BasketItem { AppUserId = userId, PlantId = id, Count = count };
                     _context.BasketItems.Add(basketItem);
                 }
                 _context.SaveChanges();
@@ -77,7 +77,6 @@ namespace Pronia.Controllers
                     cookieItem = new BasketItemCookieViewModel { PlantId = id, Count = 1 };
                     cookieItems.Add(cookieItem);
                 }
-
                 Response.Cookies.Append("Basket", JsonConvert.SerializeObject(cookieItems));
                 return PartialView("_BasketPartialView", GenerateBasketVM(cookieItems));
             }

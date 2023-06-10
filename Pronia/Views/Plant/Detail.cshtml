@@ -149,8 +149,8 @@
                                 </div>
                             </li>
                             <li class="add-to-cart">
-                                <a class="btn btn-custom-size lg-size btn-pronia-primary"
-                                 asp-action="AddToBasket" asp-controller="plant">Add to cart</a>
+                                <a class="btn btn-custom-size addcard lg-size btn-pronia-primary"
+                                 asp-action="AddToBasket"  asp-controller="plant" asp-route-id="@Model.Plant.Id">Add to cart</a>
                             </li>
                         </ul>
                         <ul class="service-item-wrap">
@@ -285,7 +285,7 @@
                                role="tab"
                                aria-controls="reviews"
                                aria-selected="false">
-                                Reviews(3)
+                                Reviews(@Model.Plant.plantReviews.Count)
                             </a>
                         </li>
                     </ul>
@@ -444,7 +444,7 @@
                                                 @for (int i = 1; i <= 5; i++)
                                                 {
                                                     <li>
-                                                        <i class="fa @(i<=rp.plantReviews.FirstOrDefault(x=>x.PlantId==rp.Id).Rate? "fa-star":"fa-star-o" )"></i>
+                                                        <i class="fa @(i<=rp.plantReviews.FirstOrDefault(x=>x.PlantId==rp.Id)?.Rate? "fa-star":"fa-star-o" )"></i>
                                                     </li>
                                                 }
                                         </ul>
@@ -461,3 +461,11 @@
     <!-- Product Area End Here -->
 </main>
 <!-- Main Content Area End Here  -->
+
+
+@*<script>
+    document.querySelector(".cart-plus-minus-box").addEventListener("change",function () {
+        console.log(this.value)
+        console.log(document.querySelector(".add-to-cart a").getAttribute("asp-action"))
+    })
+</script>*@

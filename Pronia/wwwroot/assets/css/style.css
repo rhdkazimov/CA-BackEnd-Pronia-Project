@@ -104,6 +104,7 @@ img {
 .img-full {
   width: 100%;
   overflow: hidden;
+  object-fit:cover;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center center;
