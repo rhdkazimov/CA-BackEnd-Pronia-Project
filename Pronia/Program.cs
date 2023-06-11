@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Pronia.DAL;
 using Pronia.Models;
 using Pronia.Services;
+using NuGet.Packaging.Signing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,13 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10);
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<ProniaContext>();
 
+builder.Services.AddAuthentication().AddGoogle(opt =>
+{
+    opt.ClientId = "652274005227-sm0l466nrbmjqcqajsh1lnpna2nc7scs.apps.googleusercontent.com";
+    opt.ClientSecret ="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";
+});
+
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Events.OnRedirectToLogin = options.Events.OnRedirectToAccessDenied = context =>
@@ -41,6 +49,7 @@ builder.Services.ConfigureApplicationCookie(options =>
         return Task.CompletedTask;
     };
 });
+
 
 builder.Services.AddScoped<LayoutService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
