@@ -73,5 +73,11 @@ namespace Pronia.Areas.Manage.Controllers
 
             return RedirectToAction("index", "dashboard");
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("login");
+        }
     }
 }

@@ -95,5 +95,21 @@ namespace Pronia.Areas.Manage.Controllers
 
             return RedirectToAction("index");
         }
+
+
+        public async Task<IActionResult> DeleteAdmin(string id)
+        {
+            AppUser existAdminUser = _context.AppUser.Where(_ => _.IsAdmin == true).FirstOrDefault(x => x.Id == id);
+
+            if (existAdminUser == null)
+                return View();
+
+            await _userManager.DeleteAsync(existAdminUser);
+            _context.AppUser.Remove(existAdminUser);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
     }
 }
