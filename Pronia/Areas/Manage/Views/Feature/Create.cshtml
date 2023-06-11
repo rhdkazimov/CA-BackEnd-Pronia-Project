@@ -1,0 +1,32 @@
+﻿@model Feature
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+    <h1>Create</h1>
+    <form asp-action="create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input class="form-control" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Desc">Desc</label>
+            <textarea class="form-control" asp-for="Desc" rows="2"></textarea>
+            <span class="text-danger" asp-validation-for="Desc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="IconFile">New Icon </label>
+            <input class="form-control" asp-for="IconFile">
+            <span class="text-danger" asp-validation-for="IconFile"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Html.Partial("_ValidationScriptsPartial")
+}

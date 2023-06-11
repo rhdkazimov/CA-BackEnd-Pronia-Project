@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pronia.Models
 {
@@ -12,8 +13,10 @@ namespace Pronia.Models
         [MaxLength(60)]
         public string Desc { get; set; }
 
-        [Required]
         [MaxLength(30)]
         public string Icon { get; set; }
+
+        [NotMapped]
+        public IFormFile IconFile { get; set; }
     }
 }
