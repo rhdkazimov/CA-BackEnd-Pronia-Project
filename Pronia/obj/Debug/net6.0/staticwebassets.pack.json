@@ -7589,10 +7589,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\footer\\bg\\1-1920x465.jpg"
     },
     {
-      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\images\\logo\\dark.png",
-      "PackagePath": "staticwebassets\\assets\\images\\logo\\dark.png"
-    },
-    {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\images\\newsletter\\1-1920x400.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\newsletter\\1-1920x400.jpg"
     },
@@ -8255,6 +8251,14 @@
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\plants\\eca8e77a-f77b-48c1-87ae-bad2ab283c62images.jpg",
       "PackagePath": "staticwebassets\\uploads\\plants\\eca8e77a-f77b-48c1-87ae-bad2ab283c62images.jpg"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\settings\\dark.png",
+      "PackagePath": "staticwebassets\\uploads\\settings\\dark.png"
+    },
+    {
+      "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\settings\\e8904d7a-a820-4608-af15-614fd44a609f156-1564978_planting-seeds-png-plant-logo-transparent-png.png",
+      "PackagePath": "staticwebassets\\uploads\\settings\\e8904d7a-a820-4608-af15-614fd44a609f156-1564978_planting-seeds-png-plant-logo-transparent-png.png"
     },
     {
       "Id": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\sliders\\e2f796a3-62bc-4842-aeb0-c5bef84b743b09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",

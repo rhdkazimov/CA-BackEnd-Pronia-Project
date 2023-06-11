@@ -81,6 +81,28 @@ namespace Pronia.Areas.Manage.Controllers
                 return View("Error");
             }
 
+            if(newAdmin.FullName == null)
+            {
+                ModelState.AddModelError("FullName", "FullName is required");
+                return View();
+            }
+
+            if (newAdmin.UserName == null)
+            {
+                ModelState.AddModelError("UserName", "UserName is required");
+                return View();
+            }
+            if (newAdmin.Password == null)
+            {
+                ModelState.AddModelError("Password", "Password is required");
+                return View();
+            }
+            if (newAdmin.Email == null)
+            {
+                ModelState.AddModelError("Email", "Email is required");
+                return View();
+            }
+
             AppUser user = new AppUser
             {
                 FullName = newAdmin.FullName,
@@ -97,16 +119,14 @@ namespace Pronia.Areas.Manage.Controllers
         }
 
 
-        public async Task<IActionResult> DeleteAdmin(string id)
+        public  IActionResult DeleteAdmin(string id)
         {
             AppUser existAdminUser = _context.AppUser.Where(_ => _.IsAdmin == true).FirstOrDefault(x => x.Id == id);
 
             if (existAdminUser == null)
                 return View();
 
-            await _userManager.DeleteAsync(existAdminUser);
             _context.AppUser.Remove(existAdminUser);
-
             _context.SaveChanges();
 
             return RedirectToAction("index");

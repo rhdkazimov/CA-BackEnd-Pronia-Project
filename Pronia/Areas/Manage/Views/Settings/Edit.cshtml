@@ -1,0 +1,75 @@
+﻿@model SettingsViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Edit</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <tr>
+                    <td>1</td>
+                    <td>Welcome Message</td>
+                    <td><input asp-for="@Model.WelcomeMessage" /></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Adress</td>
+                    <td><input asp-for="@Model.Adress" /></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>ContactPhone</td>
+                    <td><input asp-for="@Model.ContactPhone" /></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>SupportPhone</td>
+                    <td><input asp-for="@Model.SupportPhone" /></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Email</td>
+                    <td><input asp-for="@Model.Email" /></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>FooterInfo</td>
+                    <td><input asp-for="@Model.FooterInfo" /></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>HeaderLogo</td>
+                    <td>
+                        <img class="w-50" src="~/uploads/settings/@Model.HeaderLogoUrl" />
+                    </td>
+                    <td>
+                        <input class="form-control" asp-for="@Model.HeaderLogo">
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>FooterLogo</td>
+                    <td>
+                        <img class="w-50" src="~/uploads/settings/@Model.FooterLogoUrl" />
+                    </td>
+                    <td>
+                        <input class="form-control" asp-for="@Model.FooterLogo">
+                    </td>
+                </tr>
+                <div><button class="btn btn-success" type="sumbit">Sumbit</button></div>
+                </form>
+            </tbody>
+        </table>
+    </div>
+</div>
+

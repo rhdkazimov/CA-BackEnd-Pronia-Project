@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HHIAJya9oDvMSh7W5QVwbCPqiXE6Law47dJU+kTB3IM=",
+  "Hash": "Ip5tpfK60+6s/H2Qr9UwxxYLGrmHAwPn1AZV+sm65/I=",
   "Source": "Pronia",
   "BasePath": "_content/Pronia",
   "Mode": "Default",
@@ -1103,23 +1103,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\footer\\bg\\1-1920x465.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\images\\logo\\dark.png",
-      "SourceId": "Pronia",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
-      "BasePath": "_content/Pronia",
-      "RelativePath": "assets/images/logo/dark.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\logo\\dark.png"
     },
     {
       "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\assets\\images\\newsletter\\1-1920x400.jpg",
@@ -35120,6 +35103,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\plants\\eca8e77a-f77b-48c1-87ae-bad2ab283c62images.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\settings\\dark.png",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "uploads/settings/dark.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\settings\\dark.png"
+    },
+    {
+      "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\settings\\e8904d7a-a820-4608-af15-614fd44a609f156-1564978_planting-seeds-png-plant-logo-transparent-png.png",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "uploads/settings/e8904d7a-a820-4608-af15-614fd44a609f156-1564978_planting-seeds-png-plant-logo-transparent-png.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\settings\\e8904d7a-a820-4608-af15-614fd44a609f156-1564978_planting-seeds-png-plant-logo-transparent-png.png"
     },
     {
       "Identity": "C:\\Users\\99470\\Desktop\\Code\\BackEnd\\Pronia\\Pronia\\wwwroot\\uploads\\sliders\\e2f796a3-62bc-4842-aeb0-c5bef84b743b09bf7a72e69611c35f77c4ae4a97cc083ace1a4c_full.jpg",
