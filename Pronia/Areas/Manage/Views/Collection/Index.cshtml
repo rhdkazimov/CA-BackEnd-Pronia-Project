@@ -1,0 +1,48 @@
+﻿@model List<CollectionItems>
+@{
+    int order = 0;
+    ViewData["Title"] = "Index";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1>Collections</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <a class="btn btn-primary" asp-action="create">Create</a>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Tittle</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    order++;
+                    <tr>
+                        <td>@order</td>
+                        <td>@item.Name</td>
+                        <td>@item.Title</td>
+                        <td><img class="w-50" src="~/uploads/collections/@item.ImageName" /></td>
+                        <td>
+                            <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-danger" asp-action="delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

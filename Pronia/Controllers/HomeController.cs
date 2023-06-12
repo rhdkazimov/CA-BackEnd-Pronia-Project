@@ -25,6 +25,8 @@ namespace Pronia.Controllers
             vm.Features = _context.Features.ToList();
             vm.Reviews = _context.PlantReviews.Take(3).ToList();
             vm.NewProducts = _context.Plants.Include(x => x.PlantImages).Include(x => x.Category).Where(x => x.IsNew == true).Take(4).ToList();
+            vm.CollectionItems = _context.CollectionItems.ToList();
+            vm.AllPlants = _context.Plants.Include(x=>x.plantReviews).ToList();
 
             return View(vm);
 		}
@@ -47,6 +49,17 @@ namespace Pronia.Controllers
             };
 
             return View(vm);
+        }
+
+        public IActionResult AboutUs()
+        {
+            List<Feature> ft = _context.Features.ToList();
+            return View(ft);
+        }
+
+        public IActionResult Contact() 
+        { 
+            return View(); 
         }
     }
 }

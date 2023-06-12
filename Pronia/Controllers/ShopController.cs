@@ -76,6 +76,8 @@ namespace Pronia.Controllers
             ViewBag.MaxPrice = maxPrice ?? ViewBag.MaxPriceLimit;
 
 
+
+
             return View(shopVM);
         }
     }

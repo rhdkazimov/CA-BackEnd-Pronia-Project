@@ -1,4 +1,7 @@
 ﻿@model HomeViewModel
+@{
+    int colOrder = 0;
+}
 <!-- Begin Slider Area -->
 <div class="slider-area">
     <!-- Main Slider -->
@@ -54,42 +57,21 @@
     <div class="container">
         <div class="shipping-bg">
             <div class="row shipping-wrap">
-                <div class="col-lg-4 col-md-6">
-                    <div class="shipping-item">
-                        <div class="shipping-img">
-                            <img src="~/assets/images/website-images//car.png"
-                                 alt="Shipping Icon" />
-                        </div>
-                        <div class="shipping-content">
-                            <h2 class="title">Free Shipping</h2>
-                            <p class="short-desc mb-0">Capped at $319 per order</p>
-                        </div>
-                    </div>
-                </div>
+                @foreach(var item in Model.Features)
+                {
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
                     <div class="shipping-item">
                         <div class="shipping-img">
-                            <img src="~/assets/images/website-images//card.png"
+                            <img src="~/uploads/features/@item.Icon"
                                  alt="Shipping Icon" />
                         </div>
                         <div class="shipping-content">
-                            <h2 class="title">Safe Payment</h2>
-                            <p class="short-desc mb-0">With our payment gateway</p>
+                            <h2 class="title">@item.Name</h2>
+                            <p class="short-desc mb-0">@item.Desc</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-                    <div class="shipping-item">
-                        <div class="shipping-img">
-                            <img src="~/assets/images/website-images//service.png"
-                                 alt="Shipping Icon" />
-                        </div>
-                        <div class="shipping-content">
-                            <h2 class="title">Best Services</h2>
-                            <p class="short-desc mb-0">Friendly & Supper Services</p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -146,6 +128,7 @@
                         <div class="product-item-wrap row">
                             @foreach (var fi in Model.FeaturedPlants)
                             {
+                                int rate = fi.plantReviews.Any() ? (int)Math.Ceiling(fi.plantReviews.Average(x => x.Rate)) : 0;
                                 <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                     <div class="product-item">
                                         <div class="product-img">
@@ -195,11 +178,13 @@
                                             </div>
                                             <div class="rating-box">
                                                 <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <li>
+
+                                                            <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -215,6 +200,7 @@
                         <div class="product-item-wrap row">
                             @foreach (var ni in Model.NewPlants)
                             {
+                                int rate = ni.plantReviews.Any() ? (int)Math.Ceiling(ni.plantReviews.Average(x => x.Rate)) : 0;
                                 <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                     <div class="product-item">
                                         <div class="product-img">
@@ -264,11 +250,13 @@
                                             </div>
                                             <div class="rating-box">
                                                 <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <li>
+
+                                                            <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -284,6 +272,7 @@
                         <div class="product-item-wrap row">
                             @foreach (var di in Model.DiscountedPlants)
                             {
+                                int rate = di.plantReviews.Any() ? (int)Math.Ceiling(di.plantReviews.Average(x => x.Rate)) : 0;
                                 <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                     <div class="product-item">
                                         <div class="product-img">
@@ -333,11 +322,13 @@
                                             </div>
                                             <div class="rating-box">
                                                 <ul>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <li>
+
+                                                            <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -356,76 +347,28 @@
 <div class="banner-area section-space-top-90">
     <div class="container">
         <div class="row g-min-30 g-4">
-            <div class="col-lg-8">
+            @foreach(var item in Model.CollectionItems)
+            {
+                colOrder++;
+                <div class="@((colOrder==1||colOrder==4)?"col-lg-8":"col-lg-4 col-md-6")">
                 <div class="banner-item img-hover-effect">
                     <div class="banner-img">
-                        <img src="~/assets/images/website-images//1-1-770x300.jpg"
+                        <img src="~/uploads//collections/@item.ImageName"
                              alt="Banner Image" />
                     </div>
-                    <div class="banner-content text-position-left">
-                        <span class="collection">Collection Of Cactus</span>
+                        <div class="banner-content @((colOrder==1||colOrder==4)?"text-position-left":"text-position-center")">
+                        <span class="collection">@item.Name</span>
                         <h3 class="title">
-                            Pottery Pots & <br />
-                            Plant
+                           @item.Title
                         </h3>
                         <div class="button-wrap">
                             <a class="btn btn-custom-size btn-pronia-primary"
-                               href="shop.html">Shop Now</a>
+                               href="@item.BtnUrl">Shop Now</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="banner-item img-hover-effect">
-                    <div class="banner-img">
-                        <img src="~/assets/images/website-images//1-2-370x300.jpg"
-                             alt="Banner Image" />
-                    </div>
-                    <div class="banner-content text-position-center">
-                        <span class="collection">New Collection</span>
-                        <h3 class="title">Plant Port</h3>
-                        <div class="button-wrap">
-                            <a class="btn btn-custom-size lg-size btn-pronia-primary"
-                               href="shop.html">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="banner-item img-hover-effect">
-                    <div class="banner-img">
-                        <img src="~/assets/images/website-images//1-3-370x300.jpg"
-                             alt="Banner Image" />
-                    </div>
-                    <div class="banner-content text-position-center">
-                        <span class="collection">New Collection</span>
-                        <h3 class="title">Plant Port</h3>
-                        <div class="button-wrap">
-                            <a class="btn btn-custom-size lg-size btn-pronia-primary"
-                               href="shop.html">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="banner-item img-hover-effect">
-                    <div class="banner-img">
-                        <img src="~/assets/images/website-images//1-4-770x300.jpg"
-                             alt="Banner Image" />
-                    </div>
-                    <div class="banner-content text-position-left">
-                        <span class="collection">Collection Of Cactus</span>
-                        <h3 class="title">
-                            Hanging Pots & <br />
-                            Plant
-                        </h3>
-                        <div class="button-wrap">
-                            <a class="btn btn-custom-size lg-size btn-pronia-primary"
-                               href="shop.html">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -445,6 +388,7 @@
                     <div class="swiper-wrapper">
                         @foreach (var np in Model.NewProducts)
                         {
+                            int rate = np.plantReviews.Any() ? (int)Math.Ceiling(np.plantReviews.Average(x => x.Rate)) : 0;
                             <div class="swiper-slide product-item">
                                 <div class="product-img">
                                     <a href="shop.html">
@@ -492,11 +436,13 @@
                                     </div>
                                     <div class="rating-box">
                                         <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <li>
+
+                                                    <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>

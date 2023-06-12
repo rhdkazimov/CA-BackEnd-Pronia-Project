@@ -68,24 +68,13 @@
                                            value=""
                                            data-type="double"
                                            data-min="@ViewBag.MinRangeLimit"
-                                           data-from="16"
-                                           data-to="300"
+                                           data-from="@ViewBag.MinPrice"
+                                           data-to="@ViewBag.MaxPrice"
                                            data-max="@ViewBag.MaxRangeLimit"
                                            data-grid="false" />
-                                    <input id="maxPriceInput" form="filter-form" type="hidden" name="maxPrice" value="" />
-                                    <input id="minPriceInput" form="filter-form" type="hidden" name="minPrice" value="" />
                                 </div>
-                                @*<div class="range-slider pt--30">
-                                    <div class="sb-range-slider"></div>
-                                    <div class="slider-price">
-                                        <p>
-                                            <input type="text" id="amount" readonly="">
-                                        </p>
-                                    </div>
-                                    <input id="maxPriceInput" form="filter-form" type="hidden" name="maxPrice" value="" />
-                                    <input id="minPriceInput" form="filter-form" type="hidden" name="minPrice" value="" />
-
-                                </div>*@
+                                <input id="maxPrice" form="filter-form" type="hidden" name="maxPrice" value="" />
+                                <input id="minPrice" form="filter-form" type="hidden" name="minPrice" value="" />
                             </div>
                             <div class="widgets-item">
                                 <h2 class="widgets-title mb-4">Populer Tags</h2>
@@ -103,20 +92,6 @@
 
                                     }
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="banner-item widgets-banner img-hover-effect">
-                            <div class="banner-img">
-                                <img src="assets/images/website-images/1-270x300.webp"
-                                     alt="Banner Image" />
-                            </div>
-                            <div class="banner-content text-position-center">
-                                <span class="collection">New Collection</span>
-                                <h3 class="title">Plant Port</h3>
-                                <div class="button-wrap">
-                                    <a class="btn btn-custom-size sm-size btn-pronia-primary"
-                                       href="#">Shop Now</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,10 +139,12 @@
                             <div class="product-grid-view row g-y-20">
                                 @foreach (var pl in Model.Plants)
                                 {
+                                    int rate = pl.plantReviews.Any() ? (int)Math.Ceiling(pl.plantReviews.Average(x => x.Rate)) : 0;
+                                    
                                     <div class="col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="single-product-variable.html">
+                                                <a asp-action="detail" asp-controller="plant" asp-route-id="@pl.Id">
                                                     <img class="primary-img"
                                                          src="~/uploads/plants/@pl.PlantImages.FirstOrDefault(x=>x.PosterStatus==true).ImageName"
                                                          alt="Product Images" />
@@ -212,11 +189,13 @@
                                                 </div>
                                                 <div class="rating-box">
                                                     <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <li>
+
+                                                                <i class="fa @(i<=rate? "fa-star":"fa-star-o" )"></i>
+                                                            </li>
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -327,25 +306,3 @@
 </main>
 <!-- Main Content Area End Here -->
 
-@*@section Scripts{
-    <script>
-
-        $(function () {
-            $(".sb-range-slider").slider({
-                range: true,
-                min: 0,
-                max: @ViewBag.MaxPriceLimit,
-                values: [@ViewBag.MinPrice, @ViewBag.MaxPrice],
-                slide: function (event, ui) {
-                    $("#amount").val("£" + ui.values[0] + " - £" + ui.values[1]);
-                },
-                change: function (event, ui) {
-                    $("#minPriceInput").val(ui.values[0])
-                    $("#maxPriceInput").val(ui.values[1])
-                }
-            });
-            $("#amount").val("£" + $(".sb-range-slider").slider("values", 0) +
-                " - £" + $(".sb-range-slider").slider("values", 1));
-        });
-    </script>
-    }*@
